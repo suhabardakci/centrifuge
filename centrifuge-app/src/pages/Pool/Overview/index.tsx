@@ -126,7 +126,7 @@ export function PoolDetailOverview() {
         </Grid>
         {tokens.length > 0 && (
           <React.Suspense fallback={<Spinner />}>
-            <TrancheTokenCards trancheTokens={tokens} poolId={poolId} metadata={metadata} />
+            <TrancheTokenCards trancheTokens={tokens as any} poolId={poolId} metadata={metadata} />
           </React.Suspense>
         )}
         <React.Suspense fallback={<Spinner />}>

@@ -149,7 +149,6 @@ export function OracleFeeders({
               ))}
               <Box>
                 <AddButton
-                  variant="inverted"
                   onClick={() => {
                     if (form.values.feeders?.length <= 10) {
                       push('')

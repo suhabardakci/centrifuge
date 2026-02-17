@@ -119,7 +119,7 @@ export function useCreatePoolFee(formValues: Pick<PoolMetadataInput, 'tranches' 
         CurrencyBalance.fromFloat(values.maxReserve || 0, chainDecimals),
         { ...mockMetadata, tranches } as any,
         [],
-      ] as CreatePoolArgs)
+      ] as unknown as CreatePoolArgs)
     }, 1000),
     []
   )

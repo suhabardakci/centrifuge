@@ -49,7 +49,7 @@ export function NFTCard({ nft }: Props) {
             <Box
               as="img"
               alt={metadata?.description ?? ''}
-              src={centrifuge.metadata.parseMetadataUrl(metadata?.image)}
+              src={centrifuge.metadata.parseMetadataUrl(metadata?.image) || undefined}
               display="block"
               width="100%"
               height="100%"

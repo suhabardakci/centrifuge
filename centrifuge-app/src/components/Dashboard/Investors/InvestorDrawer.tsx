@@ -328,7 +328,7 @@ export function InvestorDrawer({
     <Drawer isOpen={isOpen} onClose={onClose} width="37%" innerPaddingTop={2}>
       <Stack gap="18px">
         <Shelf gap={1}>
-          <Box as="img" width="iconMedium" height="iconMedium" src={iconUri} borderRadius={1} />
+          <Box as="img" width="iconMedium" height="iconMedium" src={iconUri || undefined} borderRadius={1} />
           <Text variant="body2" fontWeight="500">
             {investor.tokenName}
           </Text>

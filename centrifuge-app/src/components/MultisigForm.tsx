@@ -19,14 +19,13 @@ import { Field, FieldArray, FieldProps, useFormikContext } from 'formik'
 import { useTheme } from 'styled-components'
 import { FormAddressInput } from '../pages/IssuerCreatePool/FormAddressInput'
 import { AddButton } from '../pages/IssuerCreatePool/PoolDetailsSection'
-import type { PoolManagersInput } from '../pages/IssuerPool/Access/PoolManagers'
 import { address, combine, required } from '../utils/validation'
 import { Tooltips } from './Tooltips'
 
 export function MultisigForm({ canEditFirst = true, cardProps }: { canEditFirst?: boolean; cardProps?: CardProps }) {
   const theme = useTheme()
   const chainId = useCentEvmChainId()
-  const form = useFormikContext<PoolManagersInput>()
+  const form = useFormikContext<{ adminMultisigEnabled: boolean; adminMultisig: { signers: string[]; threshold: number } }>()
   const { values } = form
 
   return (
@@ -81,7 +80,7 @@ export function MultisigForm({ canEditFirst = true, cardProps }: { canEditFirst?
                 <>
                   {values.adminMultisig?.signers
                     .slice(0, values.adminMultisigEnabled ? Infinity : 1)
-                    ?.map((_, index) => (
+                    ?.map((_: string, index: number) => (
                       <FormAddressInput
                         name={`adminMultisig.signers.${index}`}
                         validate={combine(address(), required())}
@@ -138,7 +137,7 @@ export function MultisigForm({ canEditFirst = true, cardProps }: { canEditFirst?
                   onBlur={field.onBlur}
                   errorMessage={meta.touched && meta.error ? meta.error : undefined}
                   value={field.value}
-                  options={values.adminMultisig?.signers.map((_, i) => ({
+                  options={values.adminMultisig?.signers.map((_: string, i: number) => ({
                     label: i + 1,
                     value: String(i + 1),
                   }))}

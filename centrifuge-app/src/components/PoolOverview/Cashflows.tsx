@@ -6,7 +6,7 @@ import { formatBalance } from '../../utils/formatting'
 import { getCSVDownloadUrl } from '../../utils/getCSVDownloadUrl'
 import { useLoans } from '../../utils/useLoans'
 import { useDailyPoolStates, usePool } from '../../utils/usePools'
-import { CashflowsChart } from '../Charts/CashflowsChart'
+import CashDragChart from '../Charts/CashDragChart'
 
 export const Cashflows = () => {
   const { pid: poolId } = useParams<{ pid: string }>()
@@ -90,7 +90,7 @@ export const Cashflows = () => {
           </AnchorButton>
         )}
       </Shelf>
-      <CashflowsChart poolStates={truncatedPoolStates} pool={pool} />
+      <CashDragChart />
     </Stack>
   )
 }

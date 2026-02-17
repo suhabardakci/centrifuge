@@ -73,7 +73,7 @@ const UpdateInvestorStatus = React.lazy(() => import('../pages/Onboarding/Update
 const PoolDetailPage = React.lazy(() => import('../pages/Pool'))
 const SwapsPage = React.lazy(() => import('../pages/Swaps'))
 const PortfolioPage = React.lazy(() => import('../pages/Portfolio'))
-const TransactionHistoryPage = React.lazy(() => import('../pages/Portfolio/TransactionHistory'))
+const TransactionHistoryPage = React.lazy(() => import('../pages/Portfolio/TransactionHistory').then((m) => ({ default: m.TransactionHistory })))
 const PrimePage = React.lazy(() => import('../pages/Prime'))
 const PrimeDetailPage = React.lazy(() => import('../pages/Prime/Detail'))
 const PoolTransactionsPage = React.lazy(() => import('../pages/PoolTransactions'))

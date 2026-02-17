@@ -58,7 +58,7 @@ function Collection() {
           <Box
             as="img"
             alt=""
-            src={centrifuge.metadata.parseMetadataUrl(metadata.image)}
+            src={centrifuge.metadata.parseMetadataUrl(metadata.image) || undefined}
             display="block"
             width="144px"
             height="144px"

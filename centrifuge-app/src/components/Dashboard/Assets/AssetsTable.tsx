@@ -82,7 +82,7 @@ export function AssetsTable() {
             poolIcon,
             currency: loan?.pool?.currency,
             poolName,
-            assetName: snapshot.asset.name,
+            assetName: snapshot.assetId.split('-')[1],
             maturityDate: snapshot.actualMaturityDate,
             poolId: loan.poolId,
             quantity: snapshot.outstandingQuantity,

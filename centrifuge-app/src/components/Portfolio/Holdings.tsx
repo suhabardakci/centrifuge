@@ -159,7 +159,7 @@ const columns: Column[] = [
     cell: ({ showActions, poolId, trancheId, currency, connectedNetwork, address, showMigration }: Holding) => {
       return (
         <Grid gap={1} display="flex" alignItems="flex-end">
-          {showMigration && <MigrateButtonCell address={address} />}
+          {showMigration && <MigrateButtonCell />}
           {showActions ? (
             trancheId ? (
               <Shelf gap={1}>
@@ -242,7 +242,7 @@ export function useHoldings(address?: string, chainId?: number, showActions = tr
   const CFGPrice = useCFGTokenPrice()
   const tokenBalances = useTokenBalance(address)
 
-  const tokens: Holding[] = [
+  const tokens = [
     ...portfolioTokens.map((token) => ({
       ...token,
       tokenPrice: token.tokenPrice.toDecimal() || Dec(0),
@@ -344,7 +344,7 @@ export function useHoldings(address?: string, chainId?: number, showActions = tr
           },
         ]
       : []),
-  ].filter(Boolean)
+  ].filter(Boolean) as Holding[]
 
   return tokens
 }

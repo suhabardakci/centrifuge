@@ -24,7 +24,7 @@ export function Legend({ data }: LegendProps) {
               borderLeftStyle="solid"
               borderLeftColor={color}
             >
-              {!!tooltip && <Tooltips variant="secondary" {...tooltip} />}
+              {!!tooltip && <Tooltips {...tooltip} />}
               {!!label && (
                 <Text textAlign="left" variant="label2" color="textSecondary">
                   {label}

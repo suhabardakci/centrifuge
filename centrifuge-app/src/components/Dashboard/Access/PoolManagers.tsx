@@ -3,7 +3,7 @@ import { CombinedSubstrateAccount, useCentrifugeApi, wrapProxyCallsForAccount } 
 import { useFormikContext } from 'formik'
 import * as React from 'react'
 import { combineLatest, map, of } from 'rxjs'
-import { diffPermissions } from '../../../pages/IssuerPool/Configuration/Admins'
+import { diffPermissions } from '../../../utils/usePermissions'
 import { usePoolAccess } from '../../../utils/usePermissions'
 import { MultisigForm } from '../../MultisigForm'
 import { FormHandle } from '../LandingPage/AccessDrawer'
@@ -115,6 +115,7 @@ export function PoolManagers({
 
   React.useImperativeHandle(handle, () => ({
     getBatch,
+    hasChanges: () => form.dirty,
   }))
 
   React.useEffect(() => {

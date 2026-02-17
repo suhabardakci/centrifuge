@@ -22,7 +22,7 @@ export function PoolBranding({ poolId, symbol }: PoolBrandingProps) {
     >
       {metaData?.pool?.icon && (
         <img
-          src={cent.metadata.parseMetadataUrl(metaData?.pool?.icon.uri)}
+          src={cent.metadata.parseMetadataUrl(metaData?.pool?.icon.uri) || undefined}
           alt=""
           height={poolIconSize}
           width={poolIconSize}

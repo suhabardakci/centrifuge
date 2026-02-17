@@ -101,7 +101,7 @@ function CustomLegend({ data, currency }: { currency: string; data: ChartData })
   return (
     <Box bg="backgroundPage" pl="5" pb="4">
       <Stack borderLeftWidth="3px" pl="4px" borderLeftStyle="solid" borderLeftColor={theme.colors.accentSecondary}>
-        <Tooltips variant="secondary" type="cashDrag" />
+        <Tooltips type="cashDrag" />
         <Text variant="body2">{formatPercentage(data.cashDrag)}</Text>
       </Stack>
     </Box>

@@ -315,11 +315,22 @@ export class CentrifugeBase {
   }
 
   private async findHealthyWs(): Promise<string | null> {
-    const url = await Promise.any(this.rpcEndpoints.map((url) => this.checkWsHealth(url)))
-    if (url) {
-      console.log(`Connection to ${url} established`)
-      return url
+    try {
+      const url = await Promise.any(this.rpcEndpoints.map((url) => this.checkWsHealth(url)))
+      if (url) {
+        console.log(`Connection to ${url} established`)
+        return url
+      }
+    } catch (error) {
+      const errors =
+        error instanceof AggregateError
+          ? error.errors?.map((cause) => (cause instanceof Error ? cause.message : String(cause)))
+          : [error instanceof Error ? error.message : String(error)]
+
+      console.error(`Error: No healthy parachain URL found (${errors.join('; ') || 'all checks failed'})`)
+      return null
     }
+
     console.error('Error: No healthy parachain URL found')
     return null
   }
@@ -330,7 +341,7 @@ export class CentrifugeBase {
       const timer = setTimeout(() => {
         ws.close()
         console.log(`Connection to ${url} timed out`)
-        reject()
+        reject(new Error(`Connection to ${url} timed out after ${timeoutMs}ms`))
       }, timeoutMs)
 
       ws.onopen = () => {
@@ -343,7 +354,7 @@ export class CentrifugeBase {
         clearTimeout(timer)
         ws.close()
         console.log(`Connection to ${url} failed`)
-        reject()
+        reject(new Error(`Connection to ${url} failed`))
       }
     })
   }

@@ -503,12 +503,14 @@ const CFGPriceChart = React.memo(function CFGPriceChart() {
         return {
           day: new Date(entry.date * 1000),
           price: parseFloat(entry.priceUSD),
+          apy: 0,
         }
       }) || []
     if (tokenData.length > 0) {
       tokenData.push({
         day: new Date(),
         price: currentCFGPrice || 0,
+        apy: 0,
       })
     }
     return tokenData
@@ -523,7 +525,7 @@ const CFGPriceChart = React.memo(function CFGPriceChart() {
       <Text variant="heading4" color="textPrimary" fontWeight={600}>
         Price
       </Text>
-      <PriceChart data={data} currency="CFG" filter={filter} setFilter={setFilter} />
+      <PriceChart data={data} currency="CFG" filter={filter} setFilter={setFilter} isPrice />
     </Stack>
   )
 })

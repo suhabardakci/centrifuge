@@ -455,7 +455,7 @@ export default function AssetsSection({ pool }: { pool: Pool }) {
             >
               <Text variant="heading4">Update assets prices</Text>
               <Divider color="borderPrimary" />
-              <DataTable data={data} columns={columns} defaultSortKey="quantity" defaultSortOrder="desc" />
+              <DataTable data={data ?? []} columns={columns} defaultSortKey="quantity" defaultSortOrder="desc" />
               <Grid gridTemplateColumns="1fr 1fr" gap={2} display="flex" justifyContent="flex-end">
                 <Button variant="inverted" small style={{ width: '105px' }} onClick={() => setUpdate(false)}>
                   {' '}

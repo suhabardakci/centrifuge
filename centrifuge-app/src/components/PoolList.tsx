@@ -143,7 +143,7 @@ export function poolsToPoolCardProps(
       valueLocked: getPoolValueLocked(pool),
       currencySymbol: pool.currency.symbol,
       status: getPoolStatus(pool),
-      iconUri: metaData?.pool?.icon?.uri ? cent.metadata.parseMetadataUrl(metaData?.pool?.icon?.uri) : undefined,
+      iconUri: (metaData?.pool?.icon?.uri ? cent.metadata.parseMetadataUrl(metaData?.pool?.icon?.uri) : undefined) || undefined,
       tranches: pool.tranches,
       metaData: metaData as PoolMetadata,
       createdAt: pool.createdAt ?? '',

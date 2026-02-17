@@ -81,7 +81,7 @@ export function CustomCategories() {
                             <Field
                               as={TextInput}
                               name={`issuerCategories.${index}.customType`}
-                              value={category.customType}
+                              value={(category as any).customType || ''}
                               label="Custom Type"
                               onBlur={field.onBlur}
                               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {

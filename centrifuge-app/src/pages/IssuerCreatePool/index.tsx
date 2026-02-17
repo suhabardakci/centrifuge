@@ -300,6 +300,7 @@ const IssuerCreatePoolPage = () => {
         taxInfoRequired: false,
       },
       onboardingExperience: 'none',
+      expenseRatio: 0,
     },
     validate: (values) => validateValues(values),
     validateOnMount: true,
@@ -439,7 +440,7 @@ const IssuerCreatePoolPage = () => {
               currency.key,
               CurrencyBalance.fromFloat(values.maxReserve, currency.decimals),
               metadataValues,
-              feeInput,
+              feeInput as any,
             ],
             { createType }
           )

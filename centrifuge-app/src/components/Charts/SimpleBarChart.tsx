@@ -81,7 +81,7 @@ export const SimpleBarChart = ({ currency, data, groupBy }: SimpleBarChartProps)
                       return (
                         <Box>
                           <TooltipTitle>{formatDate(item.payload.name)}</TooltipTitle>
-                          <Text variant="body3">{formatBalance(item.value ?? 0, 2, currency?.displayName)}</Text>
+                          <Text variant="body3">{formatBalance(typeof item.value === 'number' ? item.value : 0, 2, currency?.displayName)}</Text>
                         </Box>
                       )
                     })}

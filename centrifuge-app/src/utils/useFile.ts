@@ -7,6 +7,7 @@ export function useFile(uri: string | undefined | null, fileName: string) {
     ['file', uri],
     async () => {
       const url = cent.metadata.parseMetadataUrl(uri!)
+      if (!url) throw new Error('Invalid metadata URL')
       const blob = await fetch(url).then((res) => res.blob())
       const file = new File([blob], `${fileName}.${getExtension(blob.type as any)}`, { type: blob.type })
       return file

@@ -171,7 +171,7 @@ export function IssuerDetails({ metadata }: IssuerSectionProps) {
             maxWidth={100}
             maxHeight={28}
             alt={metadata?.pool?.issuer.name}
-            src={cent.metadata.parseMetadataUrl(metadata?.pool?.issuer.logo?.uri)}
+            src={cent.metadata.parseMetadataUrl(metadata?.pool?.issuer.logo?.uri) || undefined}
           />
         )}
         <Links links={links} />
@@ -200,7 +200,7 @@ export function IssuerDetails({ metadata }: IssuerSectionProps) {
       </Grid>
       <ExecutiveSummaryDialog
         issuerName={metadata?.pool?.issuer.name ?? ''}
-        href={cent.metadata.parseMetadataUrl(metadata?.pool?.links?.executiveSummary?.uri ?? '')}
+        href={cent.metadata.parseMetadataUrl(metadata?.pool?.links?.executiveSummary?.uri ?? '') || ''}
         open={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
       />
@@ -266,7 +266,7 @@ export function RatingDetails({ metadata }: IssuerSectionProps) {
                 )}
                 {rating?.reportFile && (
                   <AnchorButton
-                    href={cent.metadata.parseMetadataUrl(rating.reportFile.uri)}
+                    href={cent.metadata.parseMetadataUrl(rating.reportFile.uri) || undefined}
                     target="_blank"
                     variant="secondary"
                     icon={IconExternalLink}

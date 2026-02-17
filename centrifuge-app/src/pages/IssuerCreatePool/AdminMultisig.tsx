@@ -37,7 +37,7 @@ export function AdminMultisigSection() {
         )
       }
     >
-      {adminMultisigEnabled && <MultisigForm isEditing canRemoveFirst={false} />}
+      {adminMultisigEnabled && <MultisigForm canEditFirst={false} />}
     </PageSection>
   )
 }

@@ -43,7 +43,7 @@ export function PoolManagers({
     return (
       values.adminMultisig.threshold !== initialValues.adminMultisig.threshold ||
       values.adminMultisig.signers.length !== initialValues.adminMultisig.signers.length ||
-      new Set(values.adminMultisig.signers).symmetricDifference(new Set(initialValues.adminMultisig.signers)).size > 0
+      !values.adminMultisig.signers.every((s) => initialValues.adminMultisig.signers.includes(s))
     )
   }
 

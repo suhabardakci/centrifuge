@@ -477,7 +477,7 @@ function OnboardingSettings({ poolId, onClose }: { poolId: string; onClose: () =
                     </Box>
                   ),
                   body: (
-                    <OnboardingSettingsAccordion style={{ minHeight: displayDataTable ? 'auto' : '200px' }}>
+                    <OnboardingSettingsAccordion props={{ minHeight: displayDataTable ? 'auto' : '200px' }}>
                       <SearchInput
                         id="countrySearch"
                         label="Add restricted onboarding countries"

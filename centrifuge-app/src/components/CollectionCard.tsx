@@ -75,7 +75,7 @@ export const CollectionCardInner = React.forwardRef<HTMLAnchorElement, InnerProp
               <Box
                 as="img"
                 alt=""
-                src={cent.metadata.parseMetadataUrl(image)}
+                src={cent.metadata.parseMetadataUrl(image) || undefined}
                 display="block"
                 width="100%"
                 height="100%"

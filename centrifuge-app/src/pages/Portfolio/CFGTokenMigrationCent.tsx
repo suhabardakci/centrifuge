@@ -173,7 +173,7 @@ export default function CFGTokenMigrationCent() {
 
   return (
     <Box paddingBottom={4}>
-      <MigrationFrozenBanner isMigrationBlocked={isMigrationBlocked} balances={balances} />
+      <MigrationFrozenBanner balances={balances} />
 
       <Grid
         display="flex"

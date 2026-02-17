@@ -110,7 +110,7 @@ export function InvestorList({ pool }: { pool: Pool }) {
             </Box>,
             investor.evmAddress || utils.formatAddress(investor.accountId),
             investor.position.toFloat(),
-            investor.poolPercentage,
+            investor.poolPercentage as any,
             investor.pendingInvest.toFloat(),
             investor.pendingRedeem.toFloat(),
           ],

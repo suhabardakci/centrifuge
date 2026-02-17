@@ -33,7 +33,7 @@ export function PoolDetailHeader({ actions }: Props) {
       icon={
         <>
           {metadata?.pool?.icon ? (
-            <Box as="img" width="iconLarge" height="iconLarge" src={iconUri} borderRadius={4} />
+            <Box as="img" width="iconLarge" height="iconLarge" src={iconUri || undefined} borderRadius={4} />
           ) : (
             <Shelf
               width="iconLarge"

@@ -157,7 +157,7 @@ function PortfolioDetails({ address, chainId }: { address: string; chainId: numb
   )
 
   const yieldSinceInception = useMemo(() => {
-    return tokens.reduce((sum, token) => sum.add(token.yieldSinceInception?.toDecimal() ?? Dec(0)), Dec(0))
+    return tokens.reduce((sum, token) => sum.add((token as any).yieldSinceInception?.toDecimal() ?? Dec(0)), Dec(0))
   }, [tokens])
 
   const pageSummaryData = useMemo(

@@ -607,8 +607,12 @@ async function getPools(pools: IpfsPools): Promise<{ pools: TinlakePool[] }> {
           subClass: p.metadata.asset,
         },
         newInvestmentsStatus: p.metadata.newInvestmentsStatus,
+        investorType: '',
+        poolStructure: 'revolving',
         issuer: {
           name: p.metadata.attributes?.Issuer ?? '',
+          shortDescription: '',
+          categories: [],
           repName: p.metadata.description ?? '',
           description: p.metadata.description ?? '',
           email: p.metadata?.issuerEmail ?? '',
@@ -634,21 +638,14 @@ async function getPools(pools: IpfsPools): Promise<{ pools: TinlakePool[] }> {
       },
       tranches: {
         [`${id}-0`]: {
-          icon: p.metadata?.media?.tin
-            ? {
-                uri: p.metadata.media.tin,
-                mime: 'image/svg',
-              }
-            : null,
+          minInitialInvestment: '0',
+          apy: '',
+          apyPercentage: null,
         },
         [`${id}-1`]: {
-          icon: p.metadata?.media?.drop
-            ? {
-                uri: p.metadata.media.drop,
-                mime: 'image/svg',
-              }
-            : null,
           minInitialInvestment: '5000000000000000000000',
+          apy: '',
+          apyPercentage: null,
         },
       },
       onboarding: {
@@ -708,6 +705,7 @@ async function getPools(pools: IpfsPools): Promise<{ pools: TinlakePool[] }> {
       },
       fees: {
         totalPaid: new CurrencyBalance(0, 18),
+        totalPending: new CurrencyBalance(0, 18),
       },
       createdAt: null,
       isInitialised: true,
@@ -788,7 +786,7 @@ async function getPools(pools: IpfsPools): Promise<{ pools: TinlakePool[] }> {
     }
   })
 
-  return { pools: combined }
+  return { pools: combined as any }
 }
 
 interface State {
